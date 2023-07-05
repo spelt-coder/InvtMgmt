@@ -12,7 +12,9 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Hello, world!");
+        System.out.println("javafx.runtime.version: " + System.getProperty("javafx.runtime.version"));
+
         stage.setScene(scene);
         stage.show();
     }
