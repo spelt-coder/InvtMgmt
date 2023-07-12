@@ -63,14 +63,6 @@
                         <Insets bottom="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #E55D26;" text="Update" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
-                </Button>
                 <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #F62828;" text="Delete" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />

@@ -7,12 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import otherTabs.Vendor;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class GoodsController implements Initializable{
+public class GoodsController implements Initializable {
 
     @FXML
     private ChoiceBox<String> choice_box;
@@ -61,89 +63,94 @@ public class GoodsController implements Initializable{
     private Button button_add;
     @FXML
     private Button button_del;
+    @FXML
+    private Button button_exit;
+    @FXML
+    private void exit(ActionEvent event) {
+        // Perform any necessary cleanup or save operations
+        // before exiting the application
+
+        // Close the application
+        Stage stage = (Stage) button_exit.getScene().getWindow();
+        stage.close();
+    }
+
 
     ObservableList<Product> products = FXCollections.observableArrayList();
-//    ObservableList<Product> products = FXCollections.observableArrayList(
-//            new Beverages(1, "Cola", 10, 1, 2),
-//            new Bread(2, "Whole Wheat", 5, 2, 3),
-//            new CannedGoods(3, "Beans", 8, 3, 4)
-//            // Add more products here...
-//    );
+
 
 
     @FXML
-    private void btnInsert(ActionEvent event, InventoryManagement testIn){
+    private void btnInsert(ActionEvent event, InventoryManagement testIn) {
 
-        if(!txt_buying_price.getText().isEmpty()  && !txt_item.getText().isEmpty()
+        if (!txt_buying_price.getText().isEmpty() && !txt_item.getText().isEmpty()
                 && !txt_quantity.getText().isEmpty() && !txt_selling_price.getText().isEmpty()
-        && !txt_vendor_id.getText().isEmpty())
-        {
-            switch(choice_box.getValue())
-            {
-                case("Beverages"):
+                && !txt_vendor_id.getText().isEmpty()) {
+            switch (choice_box.getValue()) {
+                case ("Beverages"):
                     Beverages beverage = new Beverages(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addBeverage(beverage);
                     products.addAll(beverage);
                     break;
-                case("Bread/Bakery"):
+                case ("Bread/Bakery"):
                     Bread bread = new Bread(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addBread(bread);
                     products.addAll(bread);
                     break;
-                case("Canned/Jarred Goods"):
+                case ("Canned/Jarred Goods"):
                     CannedGoods cannedGood = new CannedGoods(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addCannedGoods(cannedGood);
                     products.addAll(cannedGood);
                     break;
-                case("Dairy Products"):
+                case ("Dairy Products"):
                     DairyProducts dairy = new DairyProducts(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addDairyProducts(dairy);
                     products.addAll(dairy);
                     break;
-                case("Dry/Baking Goods"):
+                case ("Dry/Baking Goods"):
                     DryGoods dry = new DryGoods(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addDryGoods(dry);
                     products.addAll(dry);
                     break;
-                case("Frozen Products"):
+                case ("Frozen Products"):
                     FrozenProducts frozenProduct = new FrozenProducts(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addFrozenProducts(frozenProduct);
                     products.addAll(frozenProduct);
                     break;
-                case("Meat"):
+                case ("Meat"):
                     Meat meat = new Meat(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addMeat(meat);
                     products.addAll(meat);
                     break;
-                case("Farm Produce"):
+                case ("Farm Produce"):
                     FarmProduce produce = new FarmProduce(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addFarmProduce(produce);
                     products.addAll(produce);
                     break;
-                case("Home Cleaners"):
+                case ("Home Cleaners"):
                     HomeCleaners cleaner = new HomeCleaners(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     testIn.addHomeCleaners(cleaner);
                     products.addAll(cleaner);
                     break;
-                case("Paper Goods"):
+                case ("Paper Goods"):
                     PaperGoods paper = new PaperGoods(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
@@ -151,7 +158,7 @@ public class GoodsController implements Initializable{
                     products.addAll(paper);
 
                     break;
-                case("Home Care"):
+                case ("Home Care"):
                     HomeCare homeCare = new HomeCare(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
@@ -159,104 +166,103 @@ public class GoodsController implements Initializable{
                     products.addAll(homeCare);
                     break;
             }
-        }
-        else
-        {
+        } else {
             System.out.println("Fields should not be empty");
         }
     }
-    @FXML
-    private void btnDel(ActionEvent event, InventoryManagement testIn){
 
-        if(!txt_buying_price.getText().isEmpty()  && !txt_item.getText().isEmpty()
+    @FXML
+    private void btnDel(ActionEvent event, InventoryManagement testIn) {
+        if (!txt_buying_price.getText().isEmpty() && !txt_item.getText().isEmpty()
                 && !txt_quantity.getText().isEmpty() && !txt_selling_price.getText().isEmpty()
-                && !txt_vendor_id.getText().isEmpty())
-        {
-            switch(choice_box.getValue())
-            {
-                case("Beverages"):
+                && !txt_vendor_id.getText().isEmpty()) {
+            switch (choice_box.getValue()) {
+                case ("Beverages"):
                     Beverages beverage = new Beverages(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeBeverage());
                     break;
-                case("Bread/Bakery"):
+                case ("Bread/Bakery"):
                     Bread bread = new Bread(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeBread());
                     break;
-                case("Canned/Jarred Goods"):
+                case ("Canned/Jarred Goods"):
                     CannedGoods cannedGood = new CannedGoods(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeCannedGoods());
                     break;
-                case("Dairy Products"):
+                case ("Dairy Products"):
                     DairyProducts dairy = new DairyProducts(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeDairyProducts());
                     break;
-                case("Dry/Baking Goods"):
+                case ("Dry/Baking Goods"):
                     DryGoods dry = new DryGoods(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeDryGoods());
                     break;
-                case("Frozen Products"):
+                case ("Frozen Products"):
                     FrozenProducts frozenProduct = new FrozenProducts(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeFrozenProducts());
                     break;
-                case("Meat"):
+                case ("Meat"):
                     Meat meat = new Meat(Integer.parseInt(txt_vendor_id.getText()),
                             txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
                             Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
                     products.remove(testIn.removeMeat());
                     break;
-                case("Farm Produce"):
-                    FarmProduce produce = new FarmProduce(Integer.parseInt(txt_vendor_id.getText()),
-                            txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
-                            Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
-                    testIn.removeFarmProduce(produce);
-                    int index = products.indexOf(produce);
-                    if (index != -1) {
-                        products.remove(index);
+                case ("Farm Produce"):
+                case ("Home Cleaners"):
+                case ("Paper Goods"):
+                case ("Home Care"):
+                    ObservableList<Product> selectedItems = table.getSelectionModel().getSelectedItems();
+                    for (Product selectedItem : selectedItems) {
+                        if (selectedItem instanceof FarmProduce || selectedItem instanceof HomeCleaners
+                                || selectedItem instanceof PaperGoods || selectedItem instanceof HomeCare) {
+                            products.remove(selectedItem);
+                            // Perform the corresponding removal operation in your InventoryManagement class
+                            // For example: testIn.removeFarmProduce((FarmProduce) selectedItem);
+                            // Make sure to update the underlying data structure in your InventoryManagement class accordingly
+                        }
                     }
                     break;
-                case("Home Cleaners"):
-                    HomeCleaners cleaner = new HomeCleaners(Integer.parseInt(txt_vendor_id.getText()),
-                            txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
-                            Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
-                    products.remove(testIn.removeHomeCleaners(cleaner));
-                    break;
-                case("Paper Goods"):
-                    PaperGoods paper = new PaperGoods(Integer.parseInt(txt_vendor_id.getText()),
-                            txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
-                            Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
-                    products.remove(testIn.removePaperGoods(paper));
-                    break;
-                case("Home Care"):
-                    HomeCare homeCare = new HomeCare(Integer.parseInt(txt_vendor_id.getText()),
-                            txt_item.getText(), Integer.parseInt(txt_quantity.getText()),
-                            Integer.parseInt(txt_buying_price.getText()), Integer.parseInt(txt_selling_price.getText()));
-                    testIn.removeHomeCare(homeCare);
-                    products.remove(homeCare);
-                    break;
             }
-        }
-        else
-        {
+        } else {
             System.out.println("Fields should not be empty");
         }
     }
 
-    public InventoryManagement take(InventoryManagement mg)
-    {
-        return mg;
+    @FXML
+    public void deleteData(ActionEvent actionEvent) {
+        TableView.TableViewSelectionModel<Product> selectionModel = table.getSelectionModel();
+        if (selectionModel.isEmpty()) {
+            System.out.println("You need to select data before deleting");
+            return;
+        }
+
+        ObservableList<Product> selectedItems = selectionModel.getSelectedItems();
+        for (Product selectedItem : selectedItems) {
+            if (selectedItem instanceof FarmProduce || selectedItem instanceof HomeCleaners
+                    || selectedItem instanceof PaperGoods || selectedItem instanceof HomeCare) {
+                table.getItems().remove(selectedItem);
+                // Perform the corresponding removal operation in your InventoryManagement class
+                // For example: testIn.removeFarmProduce((FarmProduce) selectedItem);
+                // Make sure to update the underlying data structure in your InventoryManagement class accordingly
+            }
+        }
+
+        selectionModel.clearSelection();
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -279,7 +285,5 @@ public class GoodsController implements Initializable{
 
         table.setItems(products);
 
-
     }
-
 }
