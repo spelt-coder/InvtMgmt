@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inventorymanagementsystem.MainController">
+   <children>
+      <TabPane layoutX="7.0" prefHeight="500.0" prefWidth="592.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab fx:id="tab_goods" text="Goods">
+               <content>
+                <fx:include source="goods.fxml" />
+               </content>
+            </Tab>
+            <Tab fx:id="tab_vendors" text="Vendors">
+               <content>
+                  <fx:include source="vendors.fxml" />
+               </content>
+            </Tab>
+            <Tab fx:id="tab_bills" text="Bills">
+              <content>
+                  <fx:include source="bills.fxml" />
+              </content>
+            </Tab>
+            <Tab fx:id="tab_issued_goods" text="Issued Goods">
+              <content>
+                  <fx:include source="issued-goods.fxml" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
