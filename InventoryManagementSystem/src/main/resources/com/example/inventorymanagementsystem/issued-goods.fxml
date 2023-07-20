@@ -13,12 +13,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="535.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inventorymanagementsystem.IssuedGoodsController">
     <children>
-        <TableView layoutX="190.0" layoutY="-22.0" prefHeight="604.0" prefWidth="572.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TableView fx:id="table" layoutX="190.0" layoutY="-22.0" prefHeight="604.0" prefWidth="572.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Item ID" />
-                <TableColumn prefWidth="75.0" text="Item" />
-                <TableColumn prefWidth="75.0" text="Sales Count" />
-                <TableColumn prefWidth="75.0" text="Recipient" />
+                <TableColumn fx:id="col_item_id" prefWidth="75.0" text="Item ID" />
+                <TableColumn fx:id="col_item" prefWidth="75.0" text="Item" />
+                <TableColumn fx:id="col_sales_count" prefWidth="75.0" text="Sales Count" />
+                <TableColumn fx:id="col_recipient" prefWidth="75.0" text="Recipient" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -28,7 +28,7 @@
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #F62828;" text="Exit" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #F62828;" text="Exit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -36,7 +36,7 @@
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button layoutX="10.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #46BCA2;" text="Save" textFill="WHITE">
+                        <Button fx:id="button_exit" layoutX="10.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #46BCA2;" text="Save" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -51,11 +51,11 @@
                         <Font name="System Bold" size="26.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txt_item_id" layoutX="44.0" layoutY="282.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Item ID" />
+            <TextField fx:id="txt_item_id" layoutX="44.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Item ID" />
                 <TextField fx:id="txt_item" layoutX="44.0" layoutY="404.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Item" />
                 <TextField fx:id="txt_sales_count" layoutX="44.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Sales count" />
                 <TextField fx:id="txt_recipient" layoutX="44.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Recipient" />
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #46BCA2;" text="Add" textFill="WHITE">
+                <Button fx:id="button_add" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #46BCA2;" text="Add" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -63,7 +63,7 @@
                         <Insets bottom="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #F62828;" text="Delete" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#btnDel" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #F62828;" text="Delete" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>

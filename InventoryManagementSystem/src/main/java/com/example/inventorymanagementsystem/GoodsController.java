@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import otherTabs.Vendor;
 
@@ -18,7 +19,7 @@ public class GoodsController implements Initializable {
 
     @FXML
     private ChoiceBox<String> choice_box;
-    private String[] options = {"Beverages", "Bread/Bakery", "Canned/Jarred Goods", "Dairy Products",
+    private final String[] options = {"Beverages", "Bread/Bakery", "Canned/Jarred Goods", "Dairy Products",
             "Dry/Baking Goods", "Frozen Products", "Meat", "Farm Produce", "Home Cleaners", "Paper Goods", "Home Care"};
 
     @FXML
@@ -65,6 +66,7 @@ public class GoodsController implements Initializable {
     private Button button_del;
     @FXML
     private Button button_exit;
+
     @FXML
     private void exit(ActionEvent event) {
         // Perform any necessary cleanup or save operations
@@ -77,8 +79,6 @@ public class GoodsController implements Initializable {
 
 
     ObservableList<Product> products = FXCollections.observableArrayList();
-
-
 
     @FXML
     private void btnInsert(ActionEvent event, InventoryManagement testIn) {
@@ -228,9 +228,7 @@ public class GoodsController implements Initializable {
                         if (selectedItem instanceof FarmProduce || selectedItem instanceof HomeCleaners
                                 || selectedItem instanceof PaperGoods || selectedItem instanceof HomeCare) {
                             products.remove(selectedItem);
-                            // Perform the corresponding removal operation in your InventoryManagement class
-                            // For example: testIn.removeFarmProduce((FarmProduce) selectedItem);
-                            // Make sure to update the underlying data structure in your InventoryManagement class accordingly
+
                         }
                     }
                     break;
@@ -261,6 +259,8 @@ public class GoodsController implements Initializable {
 
         selectionModel.clearSelection();
     }
+
+
 
 
 

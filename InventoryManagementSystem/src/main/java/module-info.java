@@ -4,6 +4,8 @@ module com.example.inventorymanagementsystem {
     requires java.sql;
 
 
+
     opens com.example.inventorymanagementsystem to javafx.fxml;
     exports com.example.inventorymanagementsystem;
+    opens otherTabs to javafx.base;
 }

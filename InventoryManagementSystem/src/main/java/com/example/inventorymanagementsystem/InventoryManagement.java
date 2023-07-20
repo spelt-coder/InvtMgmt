@@ -223,11 +223,11 @@ public class InventoryManagement{
     }
     public void addVendor(Vendor vendor)
     {
-        vendorMap.put(vendor.getVendorId() + "", vendor);
+        vendorMap.put(String.valueOf(vendor.getVendorID()), vendor);
     }
     public void removeVendor(Vendor vendor)
     {
-        vendorMap.remove(vendor.getVendorId() + "");
+        vendorMap.remove(String.valueOf(vendor.getVendorID()));
     }
 
     public void addBill(Bill bill)
@@ -240,86 +240,12 @@ public class InventoryManagement{
     }
     public void addIssuedGood(IssuedGoods good)
     {
-        issuedGoodsMap.put(good.getItemID() +"", good);
+        issuedGoodsMap.put(String.valueOf(good.getItemID()), good);
     }
     public void removeIssuedGood(IssuedGoods good)
     {
-        issuedGoodsMap.remove(good.getItemID() +"", good);
+        issuedGoodsMap.remove(String.valueOf(good.getItemID()), good);
     }
 
-
-    public void addProduct(Product product, String category) {
-        switch (category) {
-            case "Beverages":
-                addBeverage((Beverages) product);
-                break;
-            case "Bread/Bakery":
-                addBread((Bread) product);
-                break;
-            case "Canned/Jarred Goods":
-                addCannedGoods((CannedGoods) product);
-                break;
-            case "Dairy Products":
-                addDairyProducts((DairyProducts) product);
-                break;
-            case "Dry/Baking Goods":
-                addDryGoods((DryGoods) product);
-                break;
-            case "Frozen Products":
-                addFrozenProducts((FrozenProducts) product);
-                break;
-            case "Meat":
-                addMeat((Meat) product);
-                break;
-            case "Farm Produce":
-                addFarmProduce((FarmProduce) product);
-                break;
-            case "Home Cleaners":
-                addHomeCleaners((HomeCleaners) product);
-                break;
-            case "Paper Goods":
-                addPaperGoods((PaperGoods) product);
-                break;
-            case "Home Care":
-                addHomeCare((HomeCare) product);
-                break;
-            default:
-                // Handle unknown category or display an error message
-                break;
-        }
-    }
-
-    public Product removeProduct(Product product, String category) {
-        switch (category) {
-            case "Beverages":
-                return removeBeverage();
-            case "Bread/Bakery":
-                return removeBread();
-            case "Canned/Jarred Goods":
-                return removeCannedGoods();
-            case "Dairy Products":
-                return removeDairyProducts();
-            case "Dry/Baking Goods":
-                return removeDryGoods();
-            case "Frozen Products":
-                return removeFrozenProducts();
-            case "Meat":
-            case "Farm Produce":
-                removeFarmProduce((FarmProduce) product);
-                return (FarmProduce) product;
-            case "Home Cleaners":
-                removeHomeCleaners((HomeCleaners) product);
-                return (HomeCleaners) product;
-            case "Paper Goods":
-                removePaperGoods((PaperGoods) product);
-                return (PaperGoods) product;
-            case "Home Care":
-                removeHomeCare((HomeCare) product);
-                return (HomeCare) product;
-            default:
-                // Handle unknown category or display an error message
-                return null;
-        }
-    }
 }
 

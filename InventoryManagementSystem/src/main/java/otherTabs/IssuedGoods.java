@@ -8,10 +8,8 @@ public class IssuedGoods {
     private String item;
     private String recipient;
 
-    public IssuedGoods(int itemID, int salesCount, String item, String recipient) {
-        if (!isValidItemID(itemID)) {
-            throw new IllegalArgumentException("Invalid item ID");
-        }
+    public IssuedGoods(int itemID, String item, int salesCount,  String recipient) {
+
         this.itemID = itemID;
         this.salesCount = salesCount;
         this.item = item;
@@ -23,9 +21,7 @@ public class IssuedGoods {
     }
 
     public void setItemID(int itemID) {
-        if (!isValidItemID(itemID)) {
-            throw new IllegalArgumentException("Invalid item ID");
-        }
+
         this.itemID = itemID;
     }
 
@@ -53,10 +49,7 @@ public class IssuedGoods {
         this.recipient = recipient;
     }
 
-    private boolean isValidItemID(int itemID) {
 
-        return Product.isValidItemID(itemID);
-    }
 
     @Override
     public String toString() {

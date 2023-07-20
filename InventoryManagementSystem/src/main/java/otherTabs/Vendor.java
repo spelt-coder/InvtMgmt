@@ -6,20 +6,20 @@ import java.util.Set;
 public class Vendor {
 
     private static int lastAssignedVendorID = 0;
-    private int vendorId;
+    private final int vendorID;
     private String vendorName;
-    private String contact;
-    private String address;
-    private static Set<Integer> validVendorIDs = new HashSet<>();
+    private String products;
+    private String email;
+    private static final Set<Integer> validVendorIDs = new HashSet<>();
 
 
 
-    public Vendor(String vendorName, String contact, String address) {
-        this.vendorId = ++lastAssignedVendorID;;
-        validVendorIDs.add(this.vendorId);
+    public Vendor(String vendorName, String products, String email) {
+        this.vendorID = ++lastAssignedVendorID;
+        validVendorIDs.add(this.vendorID);
         this.vendorName = vendorName;
-        this.contact = contact;
-        this.address = address;
+        this.products = products;
+        this.email = email;
     }
 
 
@@ -27,16 +27,16 @@ public class Vendor {
         this.vendorName = vendorName;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setProducts(String products) {
+        this.products = products;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getVendorId() {
-        return vendorId;
+    public int getVendorID() {
+        return vendorID;
     }
 
     public String getVendorName() {
@@ -44,12 +44,12 @@ public class Vendor {
     }
 
 
-    public String getContact() {
-        return contact;
+    public String getProducts() {
+        return products;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
     public static boolean isValidVendorID(int vendorId) {
         return validVendorIDs.contains(vendorId);
@@ -57,10 +57,10 @@ public class Vendor {
     @Override
     public String toString() {
         return "Vendor{" +
-                "vendorId=" + vendorId +
+                "vendorId=" + vendorID +
                 ", vendorName='" + vendorName + '\'' +
-                ", contact='" + contact + '\'' +
-                ", address='" + address + '\'' +
+                ", contact='" + products + '\'' +
+                ", address='" + email + '\'' +
                 '}';
     }
 

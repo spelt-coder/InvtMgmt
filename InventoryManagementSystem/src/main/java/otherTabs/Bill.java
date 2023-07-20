@@ -10,13 +10,13 @@ public class Bill {
     private static int lastAssignedBillID = 0;
 
     private int number,vendorID, amount;
-    private GregorianCalendar date;
+    private String date;
 
-    public Bill(int vendorID, int amount, GregorianCalendar date) {
+    public Bill(int vendorID, int amount, String date) {
         this.number = ++lastAssignedBillID;
-        if (!isValidVendorID(vendorID)) {
-            throw new IllegalArgumentException("Invalid vendor ID");
-        }
+//        if (!isValidVendorID(vendorID)) {
+//            throw new IllegalArgumentException("Invalid vendor ID");
+//        }
         this.vendorID = vendorID;
         this.amount = amount;
         this.date = date;
@@ -46,26 +46,24 @@ public class Bill {
         this.amount = amount;
     }
 
-    public GregorianCalendar getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(GregorianCalendar date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        String months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
                 "Oct", "Nov", "Dec"};
 
         return "Bill{" +
                 "number=" + number +
                 ", vendorID=" + vendorID +
                 ", amount=" + amount +
-                ", date=" + date.get(Calendar.DATE)
-                + (months[date.get(Calendar.MONTH)]) +
-                + date.get(Calendar.YEAR) +
+                ", date=" + date +
                 '}';
     }
 }

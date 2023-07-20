@@ -13,22 +13,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="535.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inventorymanagementsystem.BillsController">
     <children>
-        <TableView layoutX="190.0" layoutY="-22.0" prefHeight="604.0" prefWidth="572.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="Bill number" />
-                <TableColumn prefWidth="75.0" text="Vendor ID" />
-                <TableColumn prefWidth="75.0" text="Date" />
-                <TableColumn prefWidth="75.0" text="Amount" />
-            </columns>
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
-        </TableView>
         <VBox fx:id="box_choice" alignment="CENTER" prefHeight="582.0" prefWidth="193.0" spacing="10.0" style="-fx-background-color: #2C363B;">
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #F62828;" text="Exit" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #F62828;" text="Exit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -36,7 +25,7 @@
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button layoutX="10.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #46BCA2;" text="Save" textFill="WHITE">
+                        <Button fx:id="button_exit" layoutX="10.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #46BCA2;" text="Save" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -51,15 +40,14 @@
                         <Font name="System Bold" size="26.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txt_item_id" layoutX="44.0" layoutY="282.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Bill number" />
-                <TextField fx:id="txt_item" layoutX="44.0" layoutY="404.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Vendor ID" />
-                <TextField fx:id="txt_sales_count" layoutX="44.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Date" />
-                <TextField fx:id="txt_recipient" layoutX="44.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Amount">
+                <TextField fx:id="txt_vendor_id" layoutX="44.0" layoutY="404.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Vendor ID" />
+                <TextField fx:id="txt_date" layoutX="44.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Date" />
+                <TextField fx:id="txt_amount" layoutX="44.0" layoutY="208.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Amount">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </TextField>
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #46BCA2;" text="Add" textFill="WHITE">
+                <Button fx:id="button_add" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #46BCA2;" text="Add" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -67,7 +55,7 @@
                         <Insets bottom="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #F62828;" text="Delete" textFill="WHITE">
+                <Button fx:id="button_delete" mnemonicParsing="false" onAction="#btnDel" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #F62828;" text="Delete" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -81,5 +69,16 @@
             </opaqueInsets>
         </VBox>
         <TextField fx:id="txt_category" layoutX="106.0" layoutY="-53.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="26.0" prefWidth="126.0" promptText="Category" />
+        <TableView fx:id="table" layoutX="190.0" layoutY="-22.0" prefHeight="604.0" prefWidth="572.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="col_bill_number" prefWidth="75.0" text="Bill number" />
+                <TableColumn fx:id="col_vendor_id" prefWidth="75.0" text="Vendor ID" />
+                <TableColumn fx:id="col_date" prefWidth="75.0" text="Date" />
+                <TableColumn fx:id="col_amount" prefWidth="75.0" text="Amount" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
     </children>
 </AnchorPane>

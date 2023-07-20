@@ -12,7 +12,7 @@ public class Product {
     private static int lastAssignedItemID = 0;
     private int itemID, vendorID, quantity, buyingPrice, sellingPrice, totalPrice;
     private String itemName;
-    private static Set<Integer> validItemIDs = new HashSet<>();
+    private static final Set<Integer> validItemIDs = new HashSet<>();
 
     public Product(int vendorID,String itemName, int quantity, int buyingPrice, int sellingPrice) {
         this.itemID = ++lastAssignedItemID;
